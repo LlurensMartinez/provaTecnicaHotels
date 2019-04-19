@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "title": "Mini Dreamy Room",
+        "description": "Generous and comfortable these modern furnished rooms offer two queen-size beds and are on the first floor.",
+        "image": "images/cocos/room_1.png",
+        "size": 25,
+        "beeds": 1,
+        "people": 2,
+        "price1": 400,
+        "price2": 350
+    },
+    {
+        "id": 2,
+        "title": "Sweet Bungalow",
+        "description": "The perfect blend of comfort and culture, our superior room with a central garden view has the stunning, and comes with a double bed.",
+        "image": "images/cocos/room_2.png",
+        "size": 50,
+        "beeds": 1,
+        "people": 2,
+        "price1": 500,
+        "price2": 400
+    },
+    {
+        "id": 3,
+        "title": "Los Cocos Suite",
+        "description": "If you want a little extra from your stay, you might like our superior rooms. A garden view room has a private patio and a double bed.",
+        "image": "images/cocos/room_3.png",
+        "size": 125,
+        "beeds": 3,
+        "people": 4,
+        "price1": 750,
+        "price2": 600
+    }
+]
