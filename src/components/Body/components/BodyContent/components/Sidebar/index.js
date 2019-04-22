@@ -7,12 +7,12 @@ class Sidebar extends Component {
 
      saveCookies = (event) =>{
         const { cookies, dateInit, dateOut, adults, children, price, title } = this.props.HotelStore;
-        cookies.set ('title', title , { path: '/' });
-        cookies.set ('dateInit', dateInit , { path: '/' });
-        cookies.set ('dateOut', dateOut , { path: '/' });
-        cookies.set ('adults', adults , { path: '/' });
-        cookies.set ('children', children , { path: '/' });
-        cookies.set ('price', price , { path: '/' });
+        cookies.set ('title', title , { path: '/' }, { path: '/:promo' });
+        cookies.set ('dateInit', dateInit , { path: '/' }, { path: '/:promo' });
+        cookies.set ('dateOut', dateOut , { path: '/' }, { path: '/:promo' });
+        cookies.set ('adults', adults , { path: '/' }, { path: '/:promo' });
+        cookies.set ('children', children , { path: '/' }, { path: '/:promo' });
+        cookies.set ('price', price , { path: '/' }, { path: '/:promo' });
     }
 
 

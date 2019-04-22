@@ -49,7 +49,6 @@ class SearchBar extends Component {
     }
 
     render() {
-        console.log(this.props.HotelStore);
         const { dateInit, dateOut, adults, children } = this.props.HotelStore;
 
         return (
@@ -70,7 +69,7 @@ class SearchBar extends Component {
 
                             <div className="form-group">
                                 <div className="input-group date" data-date-format="dd/mm/yyyy">
-                                    <input id="checkout" type="date" min={this.minDateCalendar()} max={this.maxDateCalendar()}name="dateOut" value={dateOut} onChange={(event) => this.changeDateOut(event)} className="form-control"  />
+                                    <input id="checkout" type="date" min={this.props.HotelStore.dateInit} max={this.maxDateCalendar()}name="dateOut" value={dateOut} onChange={(event) => this.changeDateOut(event)} className="form-control"  />
                                     <div className="input-group-addon" >
                                         <span className="glyphicon glyphicon-calendar"></span>
                                     </div>
