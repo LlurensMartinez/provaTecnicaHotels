@@ -3,15 +3,15 @@ import React, { Component } from 'react';
 class Footer extends Component {
     render() {
         return (
-            <footer class="footer">
+            <footer className="footer">
 
-                <span class="ico ico-logo"></span>
-                <span class="ico ico-social"></span>
+                <span className="ico ico-logo"></span>
+                <span className="ico ico-social"></span>
 
-                <div class="text-left col-left">
-                    <ul class="inline-block">
+                <div className="text-left col-left">
+                    <ul className="inline-block">
                         <li>
-                            <a href="#">Terms & Conditions</a>
+                            <a href="#">Terms And Conditions</a>
                         </li>
                         <li>
                             <a href="#">Privacy Policy</a>
@@ -24,12 +24,12 @@ class Footer extends Component {
                         </li>
                     </ul>
                 </div>
-                <div class="text-right col-right">
-                    <ul class="inline-block">
-                        <li class="link">
+                <div className="text-right col-right">
+                    <ul className="inline-block">
+                        <li className="link">
                             <a href="#">reservations@loscocosbungalows.com</a>
                         </li>
-                        <li class="link">
+                        <li className="link">
                             <a href="#">Tlf: +34 987 675 432</a>
                         </li>
                     </ul>

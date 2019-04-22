@@ -7,17 +7,36 @@ import Footer from './components/Footer';
 
 import './App.css';
 
+import { observer, inject } from 'mobx-react';
+import { withCookies } from 'react-cookie';
+
+
+@inject("HotelStore")
+@observer
 class App extends Component {
+  
+  changePromo = (event) => {
+    this.props.HotelStore.setPromo(this.props.match.params.promo);
+  }
+
+  getCookies = (event) => {
+    this.props.HotelStore.setCookies(this.props.cookies);
+  }
+
+
   render() {
     return (
-      <div className="room-and-rates">
-        <NavBar />
-        <SearchBar />
-        <Body />
-        <Footer />
-      </div>
+            <div className="room-and-rates">
+              <NavBar />
+              <SearchBar />
+              <Body />
+              <Footer />
+              {this.changePromo()}
+              {this.getCookies()}
+            </div>        
     );
   }
+  
 }
 
-export default App;
+export default withCookies(App);

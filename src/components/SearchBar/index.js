@@ -1,55 +1,57 @@
 import React, { Component } from 'react';
-import Sidebar from '../Body/components/BodyContent/components/Sidebar'
+import { observer, inject } from 'mobx-react';
 
+@inject("HotelStore")
+@observer
 class SearchBar extends Component {
 
-    state = {
-        dateInit: this.getCurrentDate(),
-        dateOut:this.getNextDate(),
-        adults:"",
-        children:"",
-      }
-
-    getCurrentDate(){
-
+    minDateCalendar(){
         let newDate = new Date()
         let date = newDate.getDate();
         let month = newDate.getMonth() + 1;
         let year = newDate.getFullYear();
         
-        return `${year}-${month<10?`0${month}`:`${month}`}-${date}`
+        let today = `${year}-${month<10?`0${month}`:`${month}`}-${date}`
+        return today;
         }
 
-    getNextDate(){
-
+    maxDateCalendar(){
         let newDate = new Date()
-        let date = newDate.getDate() + 1;
+        let date = newDate.getDate();
         let month = newDate.getMonth() + 1;
-        let year = newDate.getFullYear();
+        let year = newDate.getFullYear() + 1;
         
-        return `${year}-${month<10?`0${month}`:`${month}`}-${date}`
-        }
-
-    handleChange = (event) => {
-        const { name, value } = event.target;
-        this.setState({ [name]: value });
+        let oneYearMore = `${year}-${month<10?`0${month}`:`${month}`}-${date}`
+        return oneYearMore;
     }
+
+    changeDateInit = (event) => {
+        this.props.HotelStore.setDateInit(event.target.value);
+    }
+
+    changeDateOut = (event) => {
+        this.props.HotelStore.setDateOut(event.target.value);
+    }
+
+    changeAdults = (event) => {
+        this.props.HotelStore.setAdults(event.target.value);
+    }
+
+    changeChildren = (event) => {
+        this.props.HotelStore.setChildren(event.target.value);
+    }
+
+
 
     // Entra aqui al presionar Modify
     handleFormSubmit = (event) => {
-        event.preventDefault();
-        const {dateInit, dateOut, adults, children } = this.state;
-        // se envian los datos introducidos
-        return <Sidebar
-                    checkIn={dateInit} 
-                    checkOut={dateOut} 
-                    adults={adults} 
-                    children={children}
-                />     
-  }
+        event.preventDefault();        
+    }
 
     render() {
-        const { dateInit, dateOut, adults, children } = this.state;
+        console.log(this.props.HotelStore);
+        const { dateInit, dateOut, adults, children } = this.props.HotelStore;
+
         return (
             <div className="engine text-center">
                 <div className="engine-wrapper">
@@ -59,7 +61,7 @@ class SearchBar extends Component {
 
                             <div className="form-group">
                                 <div className="input-group date" data-date-format="dd/mm/yyyy">
-                                    <input id="checkin" type="date" name="dateInit" value={dateInit} onChange={this.handleChange} className="form-control"  />
+                                    <input id="checkin" type="date" min={this.minDateCalendar()} max={this.maxDateCalendar()} name="dateInit" value={dateInit} onChange={(event) => this.changeDateInit(event)} className="form-control"  />
                                     <div className="input-group-addon" >
                                         <span className="glyphicon glyphicon-calendar"></span>
                                     </div>
@@ -68,7 +70,7 @@ class SearchBar extends Component {
 
                             <div className="form-group">
                                 <div className="input-group date" data-date-format="dd/mm/yyyy">
-                                    <input id="checkout" type="date" name="dateOut" value={dateOut} onChange={this.handleChange} className="form-control"  />
+                                    <input id="checkout" type="date" min={this.minDateCalendar()} max={this.maxDateCalendar()}name="dateOut" value={dateOut} onChange={(event) => this.changeDateOut(event)} className="form-control"  />
                                     <div className="input-group-addon" >
                                         <span className="glyphicon glyphicon-calendar"></span>
                                     </div>
@@ -77,8 +79,8 @@ class SearchBar extends Component {
 
 
                             <div className="form-group select-inline">
-                                <select className="form-control" name="adults" value={adults}  onChange={this.handleChange} placeholder="Adults" id="adults">
-                                    <option value="" selected>Adults</option>
+                                <select className="form-control" name="adults" value={adults}  onChange={(event) => this.changeAdults(event)} placeholder="Adults" id="adults">
+                                    <option defaultValue="" >Adults</option>
                                     <option value="1">Adults: 1</option>
                                     <option value="2">Adults: 2</option>
                                     <option value="3">Adults: 3</option>
@@ -91,8 +93,8 @@ class SearchBar extends Component {
                                 </select>
                             </div>
                             <div className="form-group select-inline">
-                                <select className="form-control" name="children" value={children}  onChange={this.handleChange} placeholder="Children" id="children">
-                                    <option value="" selected>Children</option>
+                                <select className="form-control" name="children" value={children}  onChange={(event) => this.changeChildren(event)} placeholder="Children" id="children">
+                                    <option defaultValue="">Children</option>
                                     <option value="1">Children: 1</option>
                                     <option value="2">Children: 2</option>
                                     <option value="3">Children: 3</option>

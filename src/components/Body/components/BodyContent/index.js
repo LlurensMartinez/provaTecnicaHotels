@@ -10,7 +10,6 @@ class BodyContent extends Component {
         let roomsElements = rooms.map(room => {
             return <Room key={ room.id } room={ room }/>;
         });
-
         return (
             <div className="row">
                 <div className="col-md-8 main">
