@@ -43,12 +43,15 @@ class HotelStore extends RootStore {
   
   @action setCookies = (cookies) =>{
     this.cookies = cookies;
-    this.adults = cookies.cookies.adults;
-    this.price = cookies.cookies.price;
-    this.title = cookies.cookies.title;
-    this.children = cookies.cookies.children;
-    this.dateOut = cookies.cookies.dateInit;
-    this.dateInit = cookies.cookies.dateOut;
+    const { adults, price, title, children, dateInit, dateOut} = cookies.cookies
+    if(adults || price || title || children || dateInit || dateOut){
+      this.adults = adults;
+      this.price = price;
+      this.title = title;
+      this.children = children;
+      this.dateOut = dateInit;
+      this.dateInit = dateOut;
+    }
   }
   
   
